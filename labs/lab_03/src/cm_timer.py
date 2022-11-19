@@ -20,9 +20,9 @@ def cm_timer_2():
     yield
     print('time: {}'.format(datetime.datetime.now() - time_start))
 
-
-with cm_timer_1():
-    sleep(1.5)
-
-with cm_timer_2():
-    sleep(1.5)
+#
+# with cm_timer_1():
+#     sleep(1.5)
+#
+# with cm_timer_2():
+#     sleep(1.5)

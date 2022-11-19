@@ -1,16 +1,18 @@
 def print_result(func_to_print):
-    def decorated_func():
+    def decorated_func(*args, **kwargs):
         print(func_to_print.__name__)
-        if type(func_to_print()) == type([]):
-            for value in func_to_print():
+        res = func_to_print(*args, **kwargs)
+        if type(res) == list:
+            for value in res:
                 print(value)
-        elif type(func_to_print()) == type({}):
-            for key, value in func_to_print().items():
+        elif type(res) == dict:
+            for key, value in res.items():
                 print("{0} = {1}".format(key, value))
         else:
-            print(func_to_print())
+            print(res)
+        return res
 
-    return decorated_func()
+    return decorated_func
 
 
 @print_result
@@ -35,7 +37,7 @@ def test_4():
 
 if __name__ == '__main__':
     print('!!!!!!!!')
-    test_1
-    test_2
-    test_3#??
+    test_1()
+    test_2()
+    test_3()  # ??
     test_4()
