@@ -1,33 +1,14 @@
 # ! /usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import telebot
-from telebot import types
 import random
-
-##function logMessage
 
 bot = telebot.TeleBot('5940847478:AAF-cwf8wCPnZIKl8K3sTSBq6hOdta8pJPc')
 
-markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 
-item1 = types.KeyboardButton("Получить приятное сообщение")
-markup.add(item1)
-
-bot.send_message(757614959, "Привет, котик. У меня к тебе интересное предложение)")
-
-cute_messages = ["Люблю тебя, котёночек", "Настюшка, ты - бусинка", "Хочу утонуть в твоих глазах",
-                 "Ты бананчик, но мой бананчик. Люблю своего бананчика",
-                 "Мур мур мур, чмоки в носик"]
-
-bot.send_message(757614959, 'Нажми: \nПолучить приятное сообщение - для получения приятностей ^^',
-                     reply_markup=markup)
 @bot.message_handler(content_types=['text'])
 def get_capibara(message):
-    if message.text == "Получить приятное сообщение":
-        number = random.randint(0, 4)
-        bot.send_message(message.from_user.id, cute_messages[number])
-    elif message.text == "/get_capibara":
+    if message.text == "/get_capibara":
         number = random.randint(1, 4)
         if number == 1:
             bot.send_message(message.from_user.id, "Поздравляю, вам выпала умиротворённая капибара!")
